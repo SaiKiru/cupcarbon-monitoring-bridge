@@ -27,7 +27,7 @@ def parse_and_export(line):
     try:
         # Example line: METRIC|node_1|battery=95.5|temp=22.1
         parts = line.strip().split("|")
-        node_id = parts[1]
+        node_id = parts[1].strip()
 
         latency_val = float(parts[2].split("=")[1])
         LATENCY_GAUGE.labels(node_id=node_id).set(latency_val)
